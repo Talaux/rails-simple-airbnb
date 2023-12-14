@@ -18,9 +18,8 @@
             <%= link_to "En savoir plus", flat_path(flat) %>
             <%= link_to "Modifier", edit_flat_path(flat) %>
             <%= link_to "Supprimer", flat_path(flat),
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-            class: "ms-3 text-danger"%>
-        </div>
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "ms-3 text-danger" %> </div>
       </div>
    </div>
     <% end %>

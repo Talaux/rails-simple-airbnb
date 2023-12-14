@@ -22,12 +22,15 @@ def create
 end
 
 def update
-
+  if @flat.update(flat_params)
+    redirect_to flat_path(@flat)
+  else
+    render :new, status: :unprocessable_entity
+  end
 end
 
 def destroy
   @flat.destroy
-  redirect_to flats_path, status: :see_other
 end
 
 
