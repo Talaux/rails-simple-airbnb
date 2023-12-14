@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="flat-card">
+        <img class="image" src="<%=image_path("photoappart.webp")%>">
+      </div>
+    <p class="name"> <%= Flat.name  %> </p>
+      <%= Flat.find(1).description  %>
+    </div>
+    <div class="col-4">
+      <p id="metier"><%= Flat.find(1).name  %></p>
+    </div>
+      <div class="col-4">
+      <%= Flat.find(1).name  %>
+    </div>
+  </div>
+</div>
