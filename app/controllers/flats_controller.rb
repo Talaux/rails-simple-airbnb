@@ -1,11 +1,11 @@
 class FlatsController < ApplicationController
 
 def index
-@flats = Flat.all
+  @flats = Flat.all
 end
 
 def show
-@flats = Flat.find(params[:id])
+  @flats = Flat.find(params[:id])
 end
 
 def new
@@ -18,16 +18,19 @@ def create
     redirect_to flat_path(@flat)
   else
     render :new, status: :unprocessable_entity
-    end
+  end
 end
 
 def update
 
 end
 
-def delete
-
+def destroy
+  @flat.destroy
+  redirect_to flats_path, status: :see_other
 end
+
+
 
 def edit
 

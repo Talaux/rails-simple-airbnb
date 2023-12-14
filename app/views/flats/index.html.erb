@@ -1,17 +1,28 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-4">
-      <div class="flat-card">
-        <img class="image" src="<%=image_path("photoappart.webp")%>">
+    <% @flats.each do |flat| %>
+      <div class="col-3">
+        <div class="flat-card">
+          <div class="flat-card-image">
+            <img class="image" src="<%=image_path("photoappart.webp")%>">
+          </div>
+          <div class="flat-card content">
+            <h4 class="name">  <%= flat.name  %> </h4>
+          </div>
+            <p> <%= flat.description %></p>
+              <i class="fa-solid fa-euro-sign"></i>
+              <span> <%= flat.price_per_night %> </span>
+              <i class="fa-solid fa-people-line"></i>
+              <span> <%= flat.number_of_guests %> </span>
+          <div class="flat-card action">
+            <%= link_to "En savoir plus", flat_path(flat) %>
+            <%= link_to "Modifier", edit_flat_path(flat) %>
+            <%= link_to "Supprimer", flat_path(flat),
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "ms-3 text-danger"%>
+        </div>
       </div>
-    <p class="name"> <%= Flat.name  %> </p>
-      <%= Flat.find(1).description  %>
-    </div>
-    <div class="col-4">
-      <p id="metier"><%= Flat.find(1).name  %></p>
-    </div>
-      <div class="col-4">
-      <%= Flat.find(1).name  %>
-    </div>
+   </div>
+    <% end %>
   </div>
 </div>
