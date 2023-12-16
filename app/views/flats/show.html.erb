@@ -1,1 +1,6 @@
 lll
+   <%= link_to "Supprimer", flats_path(params[:id]),
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" },
+      class: "ms-3 text-danger" %> </div>
+
+<%= link_to "Modifier", edit_flat_path(params[:id]) %>

@@ -5,11 +5,11 @@ def index
 end
 
 def show
-  @flats = Flat.find(params[:id])
+  @flat = Flat.find(params[:id])
 end
 
 def new
-  @flats = Flat.new
+  @flat = Flat.new
 end
 
 def create
@@ -22,6 +22,7 @@ def create
 end
 
 def update
+  @flat = Flat.find(params[:id])
   if @flat.update(flat_params)
     redirect_to flat_path(@flat)
   else
@@ -30,14 +31,27 @@ def update
 end
 
 def destroy
-  @flat.destroy
+  @flat = Flat.find(params[:id])
+
+  if @flat.destroy
+    redirect_to flats_path, status: :see_other
+  else
+    # Gérer le cas où la suppression échoue
+    render plain: 'La suppression a échoué', status: :unprocessable_entity
+  end
 end
 
 
 
 def edit
-
+  @flat = Flat.find(params[:id])
 end
 
 
+end
+
+private
+
+def flat_params
+  params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
 end
